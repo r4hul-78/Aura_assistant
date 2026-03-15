@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.env/
+.venv/
+
+# IDE configurations
+.vscode/
+.idea/
+
+# Aura specifics
+modules_storage/
+outputs/
+piper/
+vosk-model-*/
+*.wav
+*.onnx
+*.json
+*.log
