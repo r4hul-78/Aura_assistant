@@ -1,6 +1,30 @@
-# Aura
+# Aura: A Lightweight Personal Voice Assistant
 
-Aura is a modular AI assistant designed with an extensible architecture. It is built to support varying plug-and-play modules for Natural Language Processing (NLP), Text-to-Speech (TTS), and other generative or functional capabilities.
+**Aura** is a modular, local-first virtual assistant designed to be fast and resource-efficient. Unlike cloud-heavy alternatives, Aura runs entirely on your machine, prioritizing user privacy and low latency. It is built to support varying plug-and-play modules for Natural Language Processing (NLP), Text-to-Speech (TTS), and other generative or functional capabilities.
+
+---
+
+### 🚀 Key Features
+
+* **Offline Voice Recognition:** Powered by the **Vosk** Indian English model for lightning-fast speech-to-text.
+* **Intent Parsing:** Uses **spaCy** for intelligent natural language understanding (NLU) without the need for heavy LLMs.
+* **Persistent Memory:** A JSON-based long-term memory system that remembers user preferences and interaction history.
+* **System Automation:** Ability to open desktop applications, set alarms, and manage persistent reminders.
+* **Local TTS:** Integrated with **Piper** for high-quality, local text-to-speech feedback.
+
+---
+
+### 🛠️ Tech Stack
+
+| Component | Technology |
+| :--- | :--- |
+| **STT** | Vosk (Offline) |
+| **NLU** | spaCy |
+| **TTS** | Piper |
+| **Storage** | JSON (Local) |
+| **Logic** | Python 3.x |
+
+---
 
 ## Architecture Structure
 
