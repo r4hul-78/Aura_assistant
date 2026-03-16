@@ -68,7 +68,7 @@ class SpacyNLPModule(BaseModule):
         bus = self.bus
         if bus:
             await bus.publish(AuraEvent(
-                type="nlp_response_ready",
-                payload={"text": response_text},
+                type="intent_response_ready",
+                payload={"text": response_text, "raw_text": text},
                 source=self.module_name
             ))

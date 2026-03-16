@@ -1,0 +1,103 @@
+{
+    "acknowledgments": [
+        "Got it.",
+        "Sure thing.",
+        "On it.",
+        "Understood.",
+        "Right away.",
+        "Consider it done.",
+        "Absolutely.",
+        "Of course."
+    ],
+    "confirmations": [
+        "Done.",
+        "All set.",
+        "That's taken care of.",
+        "Handled.",
+        "Sorted.",
+        "You're all good.",
+        "Mission accomplished."
+    ],
+    "task_completion": [
+        "Task completed successfully.",
+        "All done!",
+        "Finished. What's next?",
+        "That's wrapped up.",
+        "Done and dusted."
+    ],
+    "small_talk": [
+        "I'm doing well, thanks for asking!",
+        "All systems nominal on my end.",
+        "I'm here and ready to help.",
+        "Doing great! What can I do for you?",
+        "I'm good. Let's get things done."
+    ],
+    "gratitude_replies": [
+        "You're welcome!",
+        "Happy to help!",
+        "Anytime!",
+        "Glad I could assist.",
+        "No problem at all.",
+        "My pleasure!",
+        "That's what I'm here for.",
+        "Always happy to help, {name}."
+    ],
+    "clarification_prompts": [
+        "I didn't quite catch that. Could you say it again?",
+        "Could you repeat that?",
+        "Sorry, I missed that. One more time?",
+        "I couldn't make that out. Try again?",
+        "Hmm, I didn't get that. Could you rephrase?"
+    ],
+    "shorthand": [
+        "Next?",
+        "What else?",
+        "Anything else?",
+        "Go on.",
+        "And?"
+    ],
+    "time_greetings": {
+        "morning": [
+            "Good morning, {name}. Ready to start the day?",
+            "Morning, {name}! What's on the agenda?",
+            "Rise and shine, {name}. How can I help?",
+            "Good morning! Let's make today productive, {name}."
+        ],
+        "afternoon": [
+            "Good afternoon, {name}. What do you need?",
+            "Afternoon, {name}! How can I assist?",
+            "Hey {name}, hope the day's going well. What's up?",
+            "Good afternoon! What can I do for you, {name}?"
+        ],
+        "evening": [
+            "Good evening, {name}. Winding down or still going?",
+            "Evening, {name}! What brings you here?",
+            "Hey {name}, good evening. How can I help?",
+            "Good evening! Still working, {name}?"
+        ],
+        "night": [
+            "Hey {name}, burning the midnight oil?",
+            "It's late, {name}. What do you need?",
+            "Night owl mode, {name}? What can I do?",
+            "Still up, {name}? I'm here if you need me."
+        ]
+    },
+    "welcome_back": [
+        "Welcome back, {name}.",
+        "Good to see you again, {name}.",
+        "Hey {name}, welcome back!",
+        "{name}! Back for more?"
+    ],
+    "unknown_app": [
+        "I don't have {app} mapped yet. I can add it if you'd like.",
+        "Hmm, {app} isn't in my app list. Want me to remember it?",
+        "I'm not sure how to open {app}. Could you help me learn?",
+        "I don't recognize {app} as an application. Shall I add it?"
+    ],
+    "fallback": [
+        "I heard you, but I'm not sure how to process that yet.",
+        "I'm not quite sure what to do with that. Could you try rephrasing?",
+        "That's not something I know how to handle yet.",
+        "I didn't understand that command. Could you try again?"
+    ]
+}

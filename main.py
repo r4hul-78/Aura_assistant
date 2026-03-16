@@ -6,6 +6,7 @@ from aura.modules.nlp.spacy_nlp import SpacyNLPModule  # pyre-ignore[21]
 from aura.modules.tts.piper_tts import PiperTTSModule  # pyre-ignore[21]
 from aura.modules.asr.vosk_asr import VoskASRModule  # pyre-ignore[21]
 from aura.modules.audio.audio_player import AudioPlayerModule  # pyre-ignore[21]
+from aura.modules.interaction.interaction_module import InteractionModule  # pyre-ignore[21]
 from aura.core.events import AuraEvent  # pyre-ignore[21]
 
 logging.basicConfig(
@@ -30,18 +31,22 @@ async def async_main():
     nlp_module = SpacyNLPModule(model_name="en_core_web_sm")
     await aura.register_module(nlp_module)
 
-    # 3. Register TTS Module
+    # 3. Register Interaction Engine (Social & Interaction Layer)
+    interaction_module = InteractionModule()
+    await aura.register_module(interaction_module)
+
+    # 4. Register TTS Module
     tts_module = PiperTTSModule(
         model_path=r"piper\en_US-libritts_r-medium.onnx",
         executable_path=r"piper\piper.exe"
     )
     await aura.register_module(tts_module)
 
-    # 4. Register Audio Player
+    # 5. Register Audio Player
     audio_player = AudioPlayerModule()
     await aura.register_module(audio_player)
 
-    # 5. Register ASR (Speech-to-Text) Module.
+    # 6. Register ASR (Speech-to-Text) Module.
     asr_module = VoskASRModule(
         model_path="vosk-model-small-en-in-0.4",
         enable_mic=True
