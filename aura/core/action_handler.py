@@ -85,8 +85,8 @@ class ActionHandler:
             else:
                 return "I understood you want to save a reminder, but I couldn't catch the details. Could you repeat?"
 
-        # Fallback
-        return "I heard you, but I'm not sure how to process that command yet."
+        # Fallback — prefixed so InteractionEngine can enhance it
+        return "[FALLBACK]I heard you, but I'm not sure how to process that command yet."
 
     def _extract_task_from_doc(self, doc, lower_text: str) -> str:
         """Heuristic to extract the task description using spaCy's dependency parser."""
@@ -126,8 +126,8 @@ class ActionHandler:
                 break
                 
         if not cmd_to_run:
-            # Fallback for Windows: Try to just rely on system path or start command
-            cmd_to_run = f"start {app_name}" if os.name == 'nt' else app_name
+            # Signal the InteractionEngine that this app is unmapped
+            return f"[UNKNOWN_APP]{app_name}"
 
         try:
             # Use shell=True to support 'start' command in Windows

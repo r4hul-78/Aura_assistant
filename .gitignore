@@ -1,24 +1,49 @@
-# Byte-compiled / optimized / DLL files
+# ==============================================================
+# Aura AI Assistant — .gitignore
+# ==============================================================
+
+# ---- Python bytecode & caches ----
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyo
 
-# Virtual Environments
+# ---- Virtual environments ----
+.venv/
 venv/
 env/
 .env/
-.venv/
 
-# IDE configurations
+# ---- IDE / editor configs ----
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
-# Aura specifics
-modules_storage/
-outputs/
+# ---- Aura runtime data (user-specific, regenerated at runtime) ----
+memory.json
+test_memory.json
+reminders.json
+
+# ---- Aura binary assets (too large for Git) ----
 piper/
 vosk-model-*/
-*.wav
 *.onnx
-*.json
+
+# ---- Audio output (generated at runtime by Piper TTS) ----
+outputs/
+*.wav
+
+# ---- Logs ----
 *.log
+
+# ---- OS junk ----
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ---- Distribution / packaging ----
+dist/
+build/
+*.egg-info/
