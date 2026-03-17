@@ -43,9 +43,9 @@ class AudioPlayerModule(BaseModule):
     def _play(file_path: str):
         """Blocking audio playback — called from a background thread."""
         try:
-            # playsound (already installed)
-            from playsound import playsound  # pyre-ignore[21]
-            playsound(file_path)
+            # Windows built-in sound playback (releases file lock after playing)
+            import winsound
+            winsound.PlaySound(file_path, winsound.SND_FILENAME)  # pyre-ignore[16]
             return
         except Exception:
             pass

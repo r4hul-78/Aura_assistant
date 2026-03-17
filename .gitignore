@@ -47,3 +47,24 @@ Desktop.ini
 dist/
 build/
 *.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# ---- Testing / Coverage ----
+.pytest_cache/
+.tox/
+.coverage
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+htmlcov/
+
+# ---- System and temporary files ----
+*.tmp
+*.temp
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+
