@@ -5,6 +5,7 @@ import logging
 from typing import Optional
 from aura.core.module_base import BaseModule  # pyre-ignore[21]
 from aura.core.events import EventBus, AuraEvent  # pyre-ignore[21]
+from aura.core.audio_file_manager import AudioFileManager  # pyre-ignore[21]
 
 logger = logging.getLogger(__name__)
 
@@ -19,6 +20,8 @@ class PiperTTSModule(BaseModule):
         self.output_dir = output_dir
         self.executable_path = executable_path
         self.bus: Optional[EventBus] = None
+        # Injected externally; falls back to a local instance
+        self.file_manager: Optional[AudioFileManager] = None
 
     @property
     def module_name(self) -> str:
@@ -26,6 +29,10 @@ class PiperTTSModule(BaseModule):
 
     async def initialize(self, bus: EventBus) -> bool:
         self.bus = bus
+        # Ensure a file manager is available (create a local one if not injected)
+        if self.file_manager is None:
+            self.file_manager = AudioFileManager(output_dir=self.output_dir)
+
         if not os.path.exists(self.output_dir):
             os.makedirs(self.output_dir)
 
@@ -46,9 +53,14 @@ class PiperTTSModule(BaseModule):
         text = event.payload.get("text", "")
         if not text:
             return
-            
-        output_filename = "aura_response.wav"
-        output_filepath = os.path.join(self.output_dir, output_filename)
+
+        fm = self.file_manager
+        if fm is None:
+            logger.error("AudioFileManager not initialized — cannot synthesize.")
+            return
+
+        # Generate a unique audio file path for this response
+        output_filepath = fm.generate()
         
         cmd = [
             self.executable_path,

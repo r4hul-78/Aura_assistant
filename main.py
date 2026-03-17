@@ -4,6 +4,7 @@ import asyncio
 from aura.core.assistant import AuraAssistant  # pyre-ignore[21]
 from aura.modules.nlp.spacy_nlp import SpacyNLPModule  # pyre-ignore[21]
 from aura.modules.tts.piper_tts import PiperTTSModule  # pyre-ignore[21]
+from aura.core.audio_file_manager import AudioFileManager  # pyre-ignore[21]
 from aura.modules.asr.vosk_asr import VoskASRModule  # pyre-ignore[21]
 from aura.modules.audio.audio_player import AudioPlayerModule  # pyre-ignore[21]
 from aura.modules.interaction.interaction_module import InteractionModule  # pyre-ignore[21]
@@ -17,6 +18,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+_global_file_manager = None
 
 async def async_main():
     print("=" * 55)
@@ -35,11 +37,18 @@ async def async_main():
     interaction_module = InteractionModule()
     await aura.register_module(interaction_module)
 
-    # 4. Register TTS Module
+    # 4. Register TTS Module (with shared audio file manager)
+    file_manager = AudioFileManager(output_dir="outputs")
+    
+    # Store globally for explicit cleanup in main()
+    global _global_file_manager
+    _global_file_manager = file_manager
+
     tts_module = PiperTTSModule(
         model_path=r"piper\en_US-libritts_r-medium.onnx",
         executable_path=r"piper\piper.exe"
     )
+    tts_module.file_manager = file_manager
     await aura.register_module(tts_module)
 
     # 5. Register Audio Player
@@ -71,6 +80,9 @@ def main():
         asyncio.run(async_main())
     except KeyboardInterrupt:
         print("\n\n[Aura] Shutting down. Goodbye!")
+    finally:
+        if _global_file_manager:
+            _global_file_manager.cleanup()
 
 
 if __name__ == "__main__":
